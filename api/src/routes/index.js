@@ -58,17 +58,7 @@ const controllerDb = async () => {
   
   return data
 }
-// async function controllerDb(){
-//     return await Pokemon.findAll({
-//         includes: {
-//             model: Type,
-//             attributes: ["name"],
-//             through: {
-//                 attributes: []
-//             }
-//         }
-//     })
-// }
+
 
 //** CONCATENACION DE DATOS DE API Y DB **/
 async function controllerAll(){
