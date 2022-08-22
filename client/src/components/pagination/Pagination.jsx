@@ -3,21 +3,27 @@ import React from "react";
 export default function Paginado({ pokemonsPerPage, allPokemons, paginado}){
     const pageNumbers = [];
 
+    // el math.ceil va a redondear para arriba el resultado de dividir la cantidad de todas las recetas por la cantidad de recetas por pagina
     for (let i = 0; i < Math.ceil(allPokemons/pokemonsPerPage); i++) {
-        pageNumbers.push(i+1)
+        // pusheo el resultado del math.ceil
+        pageNumbers.push(i + 1) // el +1 es para que renderice a partir de la pagina 1 y no desde 0
     }
 
     return(
-        <div>
-            <ul>
+        <nav>
+            <ul className="paginado">
+                {/* primero comprobar si el arreglo pageNumber tiene algo
+                en caso de que si, se le hace un map
+                 */}
                 {
-                    pageNumbers && pageNumbers.map(number => {
+                    pageNumbers &&
+                    pageNumbers.map(number => {
                         return(
-                            <button key={number} onClick={()=> paginado(number)}>{number}</button>
+                            <button key={number}  onClick={() => paginado(number)}>{number}</button>
                         )
                     })
                 }
             </ul>
-        </div>
+        </nav>
     )
 }

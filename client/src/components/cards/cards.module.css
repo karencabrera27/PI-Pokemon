@@ -1,9 +1,9 @@
 .container{
     height: 380px;
-    width: 480px;
+    width: 380px;
     background-color: rgb(255, 240, 102);
     border: 1px solid #000000;
-    margin: auto;
+    margin: 30px;
 }
 
 .img{
