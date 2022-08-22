@@ -14,7 +14,7 @@ const router = Router();
 async function controllerApi(){
     try {
         // cambiar a 40!!!!!!!!
-        const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40")
+        const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=10")
         const pokemons = apiUrl.data.results
         const newPokemon = []
         for (let i = 0; i < pokemons.length; i++) {
