@@ -1,10 +1,11 @@
-import { FILTER_BY_TYPES, FILTER_CREATED, GET_DETAILS, GET_POKEMONS, GET_TYPES, ORDER_BY_NAME, SEARCH_POKEMON } from "../actions"
+import { CLEAR, CREATE_POKEMON, FILTER_BY_TYPES, FILTER_CREATED, GET_DETAILS, GET_LOADING, GET_POKEMONS, GET_TYPES, ORDER_BY_NAME, SEARCH_POKEMON, } from "../actions"
 
 const initialState = {
     pokemons: [],
     copyPokemons: [],
     types: [],
-    details: {}
+    details: {},
+    isLoading: true
 }
 
 
@@ -15,12 +16,16 @@ export default function rootReducer(state = initialState, action){
             return{
                 ...state,
                 pokemons: action.payload,
-                copyPokemons: action.payload
+                copyPokemons: action.payload,
+                // cada vez que carga los pokemons se cambia a false
+                isLoading: false
             }
         case SEARCH_POKEMON:
+            let filterNombre = action.payload === "" ? state.copyPokemons : state.copyPokemons.filter((poke) => poke.name.toLowerCase().includes(action.payload.toLowerCase()))
             return{
                 ...state,
-                pokemons: action.payload
+                pokemons: filterNombre,
+                isLoading: false
             }
         case GET_TYPES:
 
@@ -76,7 +81,22 @@ export default function rootReducer(state = initialState, action){
             case GET_DETAILS: 
                 return{
                     ...state,
+                    details: action.payload,
+                    isLoading: false
+                }
+            case CLEAR:
+                return{
+                    ...state,
                     details: action.payload
+                }
+            case CREATE_POKEMON:
+                return{
+                    ...state
+                }
+            case GET_LOADING:
+                return{
+                    ...state,
+                    isLoading: true
                 }
         default:
             return{...state}

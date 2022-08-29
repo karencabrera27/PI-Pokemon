@@ -6,6 +6,9 @@ export const GET_TYPES = "GET_TYPES";
 export const FILTER_BY_TYPES = "FILTER_BY_TYPES";
 export const FILTER_CREATED = "FILTER_CREATED";
 export const GET_DETAILS = "GET_DETAILS";
+export const CLEAR = "CLEAR";
+export const CREATE_POKEMON = "CREATE_POKEMON";
+export const GET_LOADING = "GET_LOADING";
 
 export function getPokemons(){
     return function(dispatch){
@@ -21,17 +24,22 @@ export function getPokemons(){
 }
 
 export function getPokemonName(name){
-    return async function(dispatch){
+    // return async function(dispatch){
+        console.log(name, "payload")
         try {
-            const busqueda = await axios.get(`http://localhost:3001/pokemon?name=${name}`)
-            return dispatch({
+            // const busqueda = await axios.get(`http://localhost:3001/pokemon?name=${name}`)
+            // return dispatch({
+            //     type: SEARCH_POKEMON,
+            //     payload: busqueda.data
+            // })
+            return ({
                 type: SEARCH_POKEMON,
-                payload: busqueda.data
+                payload: name
             })
         } catch (error) {
             alert("Pokemon inexistente")
         }
-    }
+    // }
 }
 
 export default function orderByName(payload){
@@ -92,5 +100,30 @@ export function getDetail(id){
         } catch (error) {
             console.log(error)
         }
+    }
+}
+
+// limpiar detalle
+export function Clear(){
+    return {
+        type: CLEAR,
+        payload: []
+    }
+}
+
+export function createPokemon(payload){
+    return async function(){
+        const post = await axios.post('http://localhost:3001/pokemon', payload)
+        console.log(post)
+        return post
+    }
+}
+
+export function ActiveLoading(){
+    return function(dispatch){
+        return dispatch({
+            type: GET_LOADING
+
+        })
     }
 }

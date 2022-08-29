@@ -14,7 +14,7 @@ const router = Router();
 async function controllerApi(){
     try {
         // cambiar a 40!!!!!!!!
-        const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=10")
+        const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20")
         const pokemons = apiUrl.data.results
         const newPokemon = []
         for (let i = 0; i < pokemons.length; i++) {
@@ -27,6 +27,7 @@ async function controllerApi(){
                 hp: dataPoke.stats[0].base_stat,
                 attack: dataPoke.stats[1].base_stat,
                 defense: dataPoke.stats[3].base_stat,
+                speed: dataPoke.stats[5].base_stat,
                 height: dataPoke.height,
                 weight: dataPoke.weight,
                 image: dataPoke.sprites.other.dream_world.front_default
@@ -101,7 +102,7 @@ router.get("/pokemon", async (req, res) => {
 //** RUTA GET POR ID **/
 
 router.get("/pokemon/:id", async (req, res)=>{
-    
+    console.log("Hola desde ruta get id")
     try {
         const { id } = req.params
         const allPokemons = await controllerAll()
@@ -120,16 +121,16 @@ router.get("/pokemon/:id", async (req, res)=>{
 //** RUTA POST **/
 
 router.post("/pokemon", async (req, res)=>{
-    
+    console.log("Hola desde ruta post pokemon")
     const { name, hp, attack, defense, speed, height, weight, image, types } = req.body;
-    let pokeName = await controllerApi()
+    let pokeName = await controllerAll()
         .then(e=>e.find((e)=> e.name === name))
 
-    let pokeType = await Type.findOne({
-        where: {
-            name: types
-        }
-    })
+    // let pokeType = await Type.findOne({
+    //     where: {
+    //         name: types
+    //     }
+    // })
 
     try {
 
@@ -140,9 +141,10 @@ router.post("/pokemon", async (req, res)=>{
         if(pokeName){
             res.status(400).send("El nombre ya existe")
         } 
-        if(pokeType){
-            res.status(400).send("El tipo de pokemon es inválido")
-        } else {
+        // if(pokeType){
+        //     res.status(400).send("El tipo de pokemon es inválido")
+        // } 
+        else {
             const newPokemon = await Pokemon.create({
             name,
             hp,
@@ -187,6 +189,7 @@ router.post("/pokemon", async (req, res)=>{
 // }
 
 router.get('/types', async (req, res) =>{
+    console.log("Hola desde ruta get types")
     const apiTypes = await axios.get("https://pokeapi.co/api/v2/type")
     const pokemonsType = apiTypes.data.results
     

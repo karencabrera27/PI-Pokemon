@@ -1,10 +1,148 @@
+.contenedor{
+    margin-top: 0px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 .containerCards{
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin: auto;
+    height: 1800px;
+    
+    /* border: 10px solid black; */
 }
-.card{
-    background-color: blue;
+.contenedorFiltros{
+    margin-top: 30px;
+    display: flex;
+    float: right;
+    margin-right: 30px;
+    height:50px;
+    /* background-color: aqua; */
+}
+.labels{
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.select{
+    height: 30px;
+    margin: 10px;
+    font-size: 15px;
+    background: transparent;
+    color: antiquewhite;
+    border: 1px solid#1DC9A0;
+}
+.searchBar{
+    margin-top: 20px;
     
 }
+.carta{
+    text-decoration: none;
+}
+/* .barra{  */
+    /* background-color: blueviolet; */
+    /* border: 5px solid black; */
+/* } */
+.contBotones{
+    margin-left: 10px;
+}
+.crear{
+    float: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 38px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: transparent;
+    border-color: #1DC9A0;
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: all 0.15s linear;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.crear:hover {
+    background-color: #1DC9A0;
+    
+    color: white;
+    transform: translateY(-5px) scale(1.05);
+   }
+   
+   .crear:active {
+    background-color: rgba(29, 201, 160, 0.08);
+    border-color: #1DC9A0;
+    color: #1DC9A0;
+    transform: translateY(5px) scale(0.95);
+   }
+   
+   .crear:disabled {
+    background-color: rgba(255, 255, 255, 0.16);
+    color: #8E8E93;
+    border-color: #8E8E93;
+   }
+/* .contLoader{
+    /* background: url(https://i.gifer.com/C7qq.gif);
+    background-size: contain; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: contain;  */
+    /* margin: -100px;
+    margin-top: -200px; */
+    /* margin-left: -200px; */
+    /* background-color:rgb(16, 217, 224) ;
+    width: 500px;
+    height: 300px;
+    
+/* } */ 
+
+/* .loader {
+  margin: auto;
+  margin-top: 80px;
+  margin-left: 150px;
+  width: 450px;
+    height: 450px;
+    margin: auto;
+    border-radius: 300px 300px 300px 300px  ;
+} */
+.loader {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    /* margin: auto; */
+    margin-left: 150%;
+    /* position: relative; */
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    box-sizing: border-box;
+    animation: shadowPulse 2s linear infinite;
+  }
+  
+  @keyframes shadowPulse {
+    33% {
+      background: #FFF;
+      box-shadow: -24px 0 #FF3D00, 24px 0 #FFF;
+    }
+    66% {
+      background: #FF3D00;
+      box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    }
+    100% {
+      background: #FFF;
+      box-shadow: -24px 0 #FFF, 24px 0 #FF3D00;
+    }
+  }
+
+   /* .contenedorFiltros{
+       /* background-color: #8E8E93; */
+   /* }  */

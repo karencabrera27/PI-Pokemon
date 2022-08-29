@@ -1,4 +1,13 @@
 .containerCards{
-    background-color: blue;
+    background: url(https://i.gifer.com/C7qq.gif);
+    background: url("https://fondosmil.com/fondo/14712.jpg");
+    /* https://fondosmil.com/fondo/14739.jpg
+    
+    https://w0.peakpx.com/wallpaper/78/875/HD-wallpaper-pikachu-fondo-pokemon.jpg
+    https://w0.peakpx.com/wallpaper/988/380/HD-wallpaper-pokemon-gb-nintendo-poke-pokeball-thumbnail.jpg
+    */
+    background-size: cover;
+    background-position: center;
+    margin-top: 0;
 
 }

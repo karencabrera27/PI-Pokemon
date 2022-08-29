@@ -1,6 +1,7 @@
 import React from "react";
+import pag from '../pagination/pagination.module.css';
 
-export default function Paginado({ pokemonsPerPage, allPokemons, paginado}){
+export default function Paginado({ pokemonsPerPage, allPokemons, paginado, currentPage}){
     const pageNumbers = [];
 
     // el math.ceil va a redondear para arriba el resultado de dividir la cantidad de todas las recetas por la cantidad de recetas por pagina
@@ -10,8 +11,8 @@ export default function Paginado({ pokemonsPerPage, allPokemons, paginado}){
     }
 
     return(
-        <nav>
-            <ul className="paginado">
+        <nav className={pag.contPaginado}>
+            <ul className={pag.paginado}>
                 {/* primero comprobar si el arreglo pageNumber tiene algo
                 en caso de que si, se le hace un map
                  */}
@@ -19,7 +20,12 @@ export default function Paginado({ pokemonsPerPage, allPokemons, paginado}){
                     pageNumbers &&
                     pageNumbers.map(number => {
                         return(
-                            <button key={number}  onClick={() => paginado(number)}>{number}</button>
+                            <div key={number} >
+                                <button key={number} className={pag.botones} onClick={() => paginado(number)}>
+                                    <span  className={pag.numeros}>{number}</span>
+                                </button>
+                            </div>
+                            
                         )
                     })
                 }

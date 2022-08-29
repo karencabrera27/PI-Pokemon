@@ -1,4 +1,12 @@
 .contenedor{
-    background-color: black;
-    height: 20px;
+    width: 100%;
+    color: aqua;
+    height: 100px;
+    background: rgb(49,112,153);
+    background: linear-gradient(90deg, rgba(49,112,153,1) 20%, rgba(41,165,172,1) 47%, rgba(31,142,171,0.6923144257703081) 100%);
 }
+.logo{
+    float: left;
+    /* background-color: black; */
+}
+
