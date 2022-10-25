@@ -5,6 +5,7 @@ export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const GET_TYPES = "GET_TYPES";
 export const FILTER_BY_TYPES = "FILTER_BY_TYPES";
 export const FILTER_CREATED = "FILTER_CREATED";
+export const FILTER_BY_ATTACK = "FILTER_BY_ATTACK";
 export const GET_DETAILS = "GET_DETAILS";
 export const CLEAR = "CLEAR";
 export const CREATE_POKEMON = "CREATE_POKEMON";
@@ -12,7 +13,7 @@ export const GET_LOADING = "GET_LOADING";
 
 export function getPokemons(){
     return function(dispatch){
-        axios.get("http://localhost:3001/pokemon")
+        axios.get(`/pokemon`)
             .then(pokemons => {
                 dispatch({
                     type: GET_POKEMONS,
@@ -24,14 +25,9 @@ export function getPokemons(){
 }
 
 export function getPokemonName(name){
-    // return async function(dispatch){
         console.log(name, "payload")
         try {
-            // const busqueda = await axios.get(`http://localhost:3001/pokemon?name=${name}`)
-            // return dispatch({
-            //     type: SEARCH_POKEMON,
-            //     payload: busqueda.data
-            // })
+            
             return ({
                 type: SEARCH_POKEMON,
                 payload: name
@@ -39,7 +35,6 @@ export function getPokemonName(name){
         } catch (error) {
             alert("Pokemon inexistente")
         }
-    // }
 }
 
 export default function orderByName(payload){
@@ -51,12 +46,7 @@ export default function orderByName(payload){
 
 export function getTypes(){
     return async function(dispatch){
-        // try {
-            
-        // } catch (error) {
-        //     console.log(error)
-        // }
-        const tipos = await axios.get("http://localhost:3001/types")
+        const tipos = await axios.get(`/types`)
             // console.log(tipos.data, "data")
             console.log(tipos, "soylos tipos")
             return dispatch({
@@ -78,6 +68,15 @@ export function filterPokemonsByTypes(payload){
     }
 }
 
+//filtro por ataque
+export function filterByAttack(payload){
+    console.log(payload, "ataque")
+    return{
+        type: FILTER_BY_ATTACK,
+        payload
+    }
+}
+
 // filtro creados-existentes
 export function filterCreated(payload){
     return {
@@ -91,7 +90,7 @@ export function getDetail(id){
     return async function(dispatch){
         console.log(getDetail, "action")
         try {
-            const detalle = await axios.get("http://localhost:3001/pokemon/" + id)
+            const detalle = await axios.get(`/pokemon/` + id)
             console.log(detalle.data, "data")
             return dispatch({
                 type: GET_DETAILS,
@@ -113,7 +112,7 @@ export function Clear(){
 
 export function createPokemon(payload){
     return async function(){
-        const post = await axios.post('http://localhost:3001/pokemon', payload)
+        const post = await axios.post('/pokemon', payload)
         console.log(post)
         return post
     }

@@ -44,3 +44,14 @@
   height: 200px;
   
 }
+.error{
+  background-color: #8E8E93;
+  color: black;
+  font-size: 30px;
+  margin: auto;
+  margin-left: 600px;
+  width: 500px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+}

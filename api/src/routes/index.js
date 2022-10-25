@@ -14,7 +14,7 @@ const router = Router();
 async function controllerApi(){
     try {
         // cambiar a 40!!!!!!!!
-        const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20")
+        const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40")
         const pokemons = apiUrl.data.results
         const newPokemon = []
         for (let i = 0; i < pokemons.length; i++) {
@@ -122,38 +122,34 @@ router.get("/pokemon/:id", async (req, res)=>{
 
 router.post("/pokemon", async (req, res)=>{
     console.log("Hola desde ruta post pokemon")
-    const { name, hp, attack, defense, speed, height, weight, image, types } = req.body;
-    let pokeName = await controllerAll()
-        .then(e=>e.find((e)=> e.name === name))
-
-    // let pokeType = await Type.findOne({
-    //     where: {
-    //         name: types
-    //     }
-    // })
+    const { name, apodo, hp, attack, defense, speed, height, weight, image, types } = req.body;
+    // let pokeName = await controllerAll()
+    //     .then(e=>e.find((e)=> e.name === name))
 
     try {
 
-        if(!name || !hp || !attack || !defense || !speed || !height || !weight || !types){
-            res.status(400).send("Faltan cargar datos")
-        }
+        // if(!name || apodo|| !hp || !attack || !defense || !speed || !height || !weight || !types){
+        //     res.status(400).send("Faltan cargar datos")
+        // }
 
-        if(pokeName){
-            res.status(400).send("El nombre ya existe")
-        } 
+        // if(pokeName){
+        //     res.status(400).send("El nombre ya existe")
+        // } 
         // if(pokeType){
         //     res.status(400).send("El tipo de pokemon es inválido")
         // } 
-        else {
+        // else
+         {
             const newPokemon = await Pokemon.create({
             name,
+            apodo,
             hp,
             attack,
             defense,
             speed,
             height, 
             weight,
-            image
+            image: image || "https://play-lh.googleusercontent.com/Y_TFr8xFCc_529AJMdpHuxD8zYMzQwXValEXeESS2pmlCNBaMsh1HPU3ZIATD5ljG2w"
         })
 
         const typeDb = await Type.findAll({
@@ -172,21 +168,7 @@ router.post("/pokemon", async (req, res)=>{
     } catch (error) {
         console.log(error)
     }
-
-
 })
-
-
-//** RUTA GET TYPES**/
-// async function controllerTypes(){
-//     try {
-//         const apiTypes = await axios.get("https://pokeapi.co/api/v2/type")
-//         const pokemonsType = apiTypes.data.results
-//         return pokemonsType
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
 router.get('/types', async (req, res) =>{
     console.log("Hola desde ruta get types")

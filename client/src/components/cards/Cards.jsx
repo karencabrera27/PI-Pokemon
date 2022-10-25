@@ -3,25 +3,34 @@ import cards from '../cards/cards.module.css';
 
 
 
-export default function Card({ name, types, image }){
+export default function Card({ name, types, image, apodo }){
     // const tipes = !types ? ["N/A"] : types.split(",");
+    console.log(apodo, "apodo")
     return (
-        <div className={cards.container}>
-            <h1 className={cards.titulo}>{name}</h1>
-            {/* <h4 >{types}</h4> */}
-            <div>
-                {
-                    types ? types.map((e, i)=>{
-                        return(
-                            <span key={i} className={cards.tipos}>
-                                {e} 
-                             </span>
-                        )
-                    }) : <h4>N/A</h4>
-                }
-            </div>
-            <img src={image} alt="not found" className={cards.img}/>
-
-        </div>
+        <>
+            {
+                types ? (
+                    <div className={cards.container}>
+                        <h1 className={cards.titulo}>{name}</h1>
+                        
+                        <div>
+                            {
+                                types.map((e, i)=>{
+                                    return(
+                                        <span key={i} className={cards.tipos}>
+                                            {e} 
+                                        </span>
+                                    )
+                                }) 
+                            }
+                        </div>
+                        <img src={image} alt="not found" className={cards.img}/>
+                            <h4>{apodo}</h4>
+                    </div>
+                    ) : (
+                        <h1 className={cards.error}>No existe un pokemon con ese tipo</h1>
+                    )
+            }
+        </>
     )
 }

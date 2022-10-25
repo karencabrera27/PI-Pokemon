@@ -13,9 +13,15 @@ import form from '../formulario/formulario.module.css';
 function validacion(input){
     let error = {};
     const regexName = /^[a-zA-Z ]+$/;
+    
 
     const selectUndefined = (input)=> {
         //comprueba que todos los campos esten llenos
+        // if(!input.types.length){
+        //     return true
+        // }
+        
+
         for(let i in input ){
             if(input[i] === undefined){
                 return true;
@@ -24,10 +30,12 @@ function validacion(input){
             }
         }
     }
+    
 
     if(selectUndefined(input)){
         error.allFields = "Todos los campos son obligatorios"
     }
+    
     if(!input.name ){
         error.name = "El campo nombre es obligatorio"
     } else if(!regexName.test(input.name)){
@@ -63,6 +71,8 @@ function validacion(input){
     } else if(input.weight <= 0 || input.weight > 100){
         error.weight = "Debe ser mayor a 0 y menor a 100"
     }
+    
+
      
     // el test sirve para comprobar que haya un escritura dentro del input
     // if(input.image && !url.test(input.image)){
@@ -115,15 +125,15 @@ export default function Formulario(){
             ...input,
             [e.target.name] : e.target.value
         }))
-        console.log(input)
         
-        console.log(e.target.value)
     }
 
     function handleSelect(e){
+       
         if(input.types.includes(e.target.value)){
            return alert("El tipo ya existe") 
         }
+        
         if(input.types.length >= 2){
             return alert("No aceptan mas tipos")
         }
@@ -167,6 +177,7 @@ export default function Formulario(){
         }
     }
     
+    
     return(
         <div className={form.contenedor}>
             <NavBar/>
@@ -183,6 +194,15 @@ export default function Formulario(){
                         <input type="text"
                         value={input.name} 
                         name="name"
+                        onChange={(e)=>handleChange(e)}/>
+                        <span className={form.validacion}>{error.name && (<p className={form.error}>{error.name}</p>)}</span>
+                    </div>
+
+                    <div className={form.contLabels}>
+                        <label>Apodo:</label>
+                        <input type="text"
+                        value={input.apodo} 
+                        name="apodo"
                         onChange={(e)=>handleChange(e)}/>
                         <span className={form.validacion}>{error.name && (<p className={form.error}>{error.name}</p>)}</span>
                     </div>
@@ -248,12 +268,12 @@ export default function Formulario(){
                         name="image"
                         onChange={(e)=>handleChange(e)}
                         />
+                        <span className={form.validacion}>{error.weight && (<p className={form.error}>{error.weight}</p>)}</span>
                     </div>
                     <br />
                 </div>
                 <label>Tipo/s:</label>
-                <select onChange={(e)=>handleSelect(e)}>
-                    <option value="all">Todos</option>
+                <select id='select' name='tipos' onChange={(e)=>handleSelect(e)}>
                     {
                         tipos.map((e)=>
                             (
@@ -264,19 +284,21 @@ export default function Formulario(){
                         )
                     }
                 </select>
+                <span className={form.validacion}>{error.type && (<p className={form.error}>{error.type}</p>)}</span>
                 <ul className={form.selector}>
                     <li>{input.types.map((e) => e + " ")}</li>
                 </ul>
                 
-                {
+                {/* {
                         Object.keys(error).length ? (
                 <button type='submit'  disabled={true} className={form.crear}>Crear</button>
-                ) :
+                ) : */}
                 (
                     <button type='submit'  className={form.crear}>Crear</button>
                 )
-            }
+            {/* } */}
             </form>
+            
         </div>
     )
 

@@ -21,20 +21,10 @@ export default function SearchBar() {
         // console.log(name)
     }
 
-
-    // function handleSubmit(e){
-    //     setName(e.target.value)
-    //     e.preventDefault()
-    //     dispatch(getPokemonName(name))
-    //     navigate("/home");
-    // }
-
     return (
         <div className={search.contenedor}>
             <input type="text" value={name} placeholder="Buscar..." onChange={(e) => { setName(e.target.value); handleInputChange(e.target.value)}}  className={search.input} />
-            {/* <button type="submit" className={search.button}>
-                <img src="https://images.vexels.com/media/users/3/132068/isolated/preview/f9bb81e576c1a361c61a8c08945b2c48-icono-de-busqueda.png" height="20px" width="20px" alt="" />
-            </button> */}
+            
         </div>
     )
 }

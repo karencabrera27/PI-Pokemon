@@ -1,14 +1,11 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDetail, Clear } from "../../actions/index";
 
 import detail from "../detail/detail.module.css"
 import { Link } from "react-router-dom";
-import navBar from "../navBar/NavBar"
 import NavBar from "../navBar/NavBar";
 
 export default function Detail(){

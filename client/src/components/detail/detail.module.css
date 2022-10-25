@@ -18,8 +18,8 @@
     height: 450px;
     margin: auto;
     border-radius: 100px 100px 100px 100px  ; */
-    width: 250px;
-  height: 260px;
+    width: 350px;
+  height: 380px;
   padding: 0.5rem;
   margin: auto;
   background: rgba(198, 198, 198, 0.34);
@@ -36,7 +36,7 @@
 }
 
 .contenedorCarta:hover{
-    height: 454px;
+    height: 700px;
   transform: skew(0deg);
 }
 
@@ -46,6 +46,7 @@
   color: rgb(34, 44, 41);
   text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
   text-transform: uppercase;
+  font-size: 30px;
 }
 .tipos{
     color: rgb(34, 44, 41);
@@ -53,6 +54,7 @@
   margin: 1.3rem;
     text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
     font-style: italic;
+    font-size: 20px;
 }
 
 .volver{
@@ -75,27 +77,32 @@
     float: left;
     margin: 15px;
     font-size: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 200px;
     padding: 10px;
+    max-width: 20px;
+    max-height: 20px;
+    overflow: hidden;
 }
 /* .titulo{
     text-transform: uppercase;
 } */
 .img{
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
 }
 
 .contenedorCaracteristicas{
     display: flex;
     text-align: center;
     justify-content: center;
+    font-size: 20px;
 }
 
 .caracteristicas{
     margin: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    color: rgb(34, 44, 41);
 }
 span{
     background-color: aliceblue;

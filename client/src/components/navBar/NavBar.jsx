@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import n from './navBar.module.css'
 
 const NavBar = () => {

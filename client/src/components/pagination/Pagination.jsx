@@ -1,7 +1,7 @@
 import React from "react";
 import pag from '../pagination/pagination.module.css';
 
-export default function Paginado({ pokemonsPerPage, allPokemons, paginado, currentPage}){
+export default function Paginado({ pokemonsPerPage, allPokemons, paginado}){
     const pageNumbers = [];
 
     // el math.ceil va a redondear para arriba el resultado de dividir la cantidad de todas las recetas por la cantidad de recetas por pagina
